@@ -1,11 +1,12 @@
 import React from "react";
 import Button from "../button";
+import "./forms-style.scss";
 
 export default class Formulario extends React.Component {
   render() {
     return (
-      <form>
-        <div>
+      <form className="novaTarefa">
+        <div className="inputContainer">
           <label htmlFor="tarefa">Todo: </label>
           <input
             type="text"
@@ -15,7 +16,7 @@ export default class Formulario extends React.Component {
             required
           />
         </div>
-        <div>
+        <div className="inputContainer">
           <label
             htmlFor="tempo
           "
