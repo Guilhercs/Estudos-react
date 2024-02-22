@@ -1,8 +1,8 @@
 import React from "react";
-import "./button.scss";
+import buttonStyle from "./button.module.scss";
 
 export default class Button extends React.Component {
   render() {
-    return <button className="button">Clique aqui</button>;
+    return <button className={buttonStyle.button}>Clique aqui</button>;
   }
 }
