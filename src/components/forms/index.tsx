@@ -31,7 +31,9 @@ export default class Formulario extends React.Component {
             required
           />
         </div>
-        <Button />
+        <Button>
+          <p>Add Todo</p>
+        </Button>
       </form>
     );
   }
