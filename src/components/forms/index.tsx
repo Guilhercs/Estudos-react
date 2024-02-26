@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../button";
 import formsStyle from "./forms-style.module.scss";
 import { ITodos } from "../../types/todos";
+import { v4 as uuidv4 } from "uuid";
 
 export default class Formulario extends React.Component<{
   setTodos: React.Dispatch<React.SetStateAction<ITodos[]>>;
@@ -13,7 +14,14 @@ export default class Formulario extends React.Component<{
 
   addTodo(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    this.props.setTodos((oldTodos) => [...oldTodos, { ...this.state }]);
+    this.props.setTodos((oldTodos) => [
+      ...oldTodos,
+      { ...this.state, selected: false, complete: false, id: uuidv4() },
+    ]);
+    this.setState({
+      todo: "",
+      timer: "00:00",
+    });
   }
   render() {
     return (
