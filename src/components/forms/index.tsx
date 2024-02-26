@@ -9,7 +9,7 @@ export default class Formulario extends React.Component<{
 }> {
   state = {
     todo: "",
-    timer: "00:00",
+    time: "00:00",
   };
 
   addTodo(event: React.FormEvent<HTMLFormElement>) {
@@ -52,9 +52,9 @@ export default class Formulario extends React.Component<{
             type="time"
             step="1"
             name="tempo"
-            value={this.state.timer}
+            value={this.state.time}
             onChange={(event) =>
-              this.setState({ ...this.state, timer: event.target.value })
+              this.setState({ ...this.state, time: event.target.value })
             }
             id="tempo"
             min="00:00:00"

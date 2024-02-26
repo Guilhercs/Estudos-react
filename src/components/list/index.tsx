@@ -2,13 +2,18 @@ import listStyle from "./list-style.module.scss";
 import Item from "./item";
 import { ITodos } from "../../types/todos";
 
-export default function List({ todos }: { todos: ITodos[] }) {
+interface Props {
+  todos: ITodos[];
+  selectTodo: (selectedTodo: ITodos) => void;
+}
+
+export default function List({ todos, selectTodo }: Props) {
   return (
     <aside className={listStyle.listaTarefas}>
       <h2>Estudos do dia</h2>
       <ul>
-        {todos.map((item, index) => (
-          <Item key={index} {...item} />
+        {todos.map((item) => (
+          <Item selectTodo={selectTodo} key={item.id} {...item} />
         ))}
       </ul>
     </aside>

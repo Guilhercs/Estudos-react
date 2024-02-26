@@ -7,10 +7,21 @@ import { ITodos } from "../types/todos";
 
 function App() {
   const [todos, setTodos] = useState<ITodos[]>([]);
+  const [selected, setSelected] = useState<ITodos>();
+
+  function selectTodo(todoSelected: ITodos) {
+    setSelected(todoSelected);
+    setTodos((oldTodo) =>
+      oldTodo.map((todo) => ({
+        ...todo,
+        selected: todo.id === selected?.id ? true : false,
+      }))
+    );
+  }
   return (
     <div className={style.appStyle}>
       <Forms setTodos={setTodos} />
-      <List todos={todos} />
+      <List todos={todos} selectTodo={selectTodo} />
       <Timer />
     </div>
   );

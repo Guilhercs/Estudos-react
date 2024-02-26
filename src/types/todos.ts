@@ -1,6 +1,6 @@
 export interface ITodos {
   todo: string;
-  timer: string;
+  time: string;
   complete: boolean;
   selected: boolean;
   id: string;
