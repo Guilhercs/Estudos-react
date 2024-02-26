@@ -1,16 +1,19 @@
 import React from "react";
 import Button from "../button";
 import formsStyle from "./forms-style.module.scss";
+import { ITodos } from "../../types/todos";
 
-export default class Formulario extends React.Component {
+export default class Formulario extends React.Component<{
+  setTodos: React.Dispatch<React.SetStateAction<ITodos[]>>;
+}> {
   state = {
     todo: "",
-    tempo: "00:00",
+    timer: "00:00",
   };
 
   addTodo(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("state: ", this.state);
+    this.props.setTodos((oldTodos) => [...oldTodos, { ...this.state }]);
   }
   render() {
     return (
@@ -41,9 +44,9 @@ export default class Formulario extends React.Component {
             type="time"
             step="1"
             name="tempo"
-            value={this.state.tempo}
+            value={this.state.timer}
             onChange={(event) =>
-              this.setState({ ...this.state, tempo: event.target.value })
+              this.setState({ ...this.state, timer: event.target.value })
             }
             id="tempo"
             min="00:00:00"
